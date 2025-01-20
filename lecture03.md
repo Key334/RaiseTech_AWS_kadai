@@ -1,7 +1,8 @@
 # 第3回課題
 githubのリポジトリの内容  
 (RaiseTechが用意したもの)をEC２を使ってデプロイする作業を行った。
-* サンプルアプリをwebブラウザから開いた画面　![スクリーンショット 2025-01-19 100709](images/スクリーンショット 2025-01-19 100709.png)
+* サンプルアプリをwebブラウザから開いた画面　![スクリーンショット 2025-01-19 100709](https://github.com/user-attachments/assets/259f3df0-2ee8-4d9f-9054-f1c98a4c3296)
+)
 ## APサーバについて調べる
 * APサーバの名前とバージョン→puma6.4.2　![スクリーンショット 2025-01-19 101330](https://github.com/user-attachments/assets/036b6265-86f6-4363-aece-a66b5253c554)
 * 終了後、アクセスできない　![スクリーンショット 2025-01-19 102907](https://github.com/user-attachments/assets/f492a622-e3d6-401e-b90a-d2b39133894e)
