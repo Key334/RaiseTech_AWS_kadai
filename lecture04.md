@@ -3,7 +3,7 @@
 ![VPC作成](images/AWS_lecture04_evi/vpc作成%202025-01-30%20103204.png)
 ## EC2
 ![EC２作成](images/AWS_lecture04_evi/ec2作成%202025-01-30%20103335.png)
-![EC2のインバウンドアウトバウンド](images/AWS_lecture04_evi/ec2のインバウンドアウトバウンド%202025-01-30%20104354.png)
+![EC2のインバウンドアウトバウンド](images/AWS_lecture04_evi/ec2のインバウンドアウトバウンド2025-01-30%20104354.png)
 ## RDS
 ![RDS作成](images/AWS_lecture04_evi/rds作成%202025-01-30%20103122.png)
 ![RDSのセキュリティグループ](images/AWS_lecture04_evi/RDSのセキュリティグループ%202025-01-30%20105223.png)
