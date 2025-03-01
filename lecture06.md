@@ -1,12 +1,13 @@
 # 第六回課題
 ## CloudTrailで最後にAWSを利用した日の記録を確認
-* 最新のイベント履歴![最新のイベント履歴]()
+* 最新のイベント履歴![最新のイベント履歴](images/AWS_lecture06_evi/最新のイベント履歴2025-03-01%20102329.png)
 * イベント名と、含まれている内容
-3 つ![]()
-イベント名→
-イベント時間→
-イベントソース→
-AWSリージョン→ap-northeast-1
+3 つ
++ 最新のイベント履歴の詳細![最新のイベント履歴の詳細](images/AWS_lecture06_evi/最新のイベント履歴の詳細 2025-03-01%20102403.png)
++ イベント名→ConsoleLogin
++ イベント時間→3月 01, 2025, 10:21:29 (UTC+09:00)
++ イベントソース→signin.amazonaws.com
++ AWSリージョン→ap-northeast-1
 ## cloudwatchアラームを設定
 * ロードバランサーのターゲットグループがunhealthy状態![ロードバランサーのターゲットグループがunhealthy状態](images/AWS_lecture06_evi/ロードバランサーのターゲットグループがunhealthy状態2025-02-28%20123026.png)
 * cloudwatchのアラームがアラーム状態![cloudwatchのアラームがアラーム状態](images/AWS_lecture06_evi/cloudwatchのアラームがアラーム状態2025-02-28%20123132.png)
