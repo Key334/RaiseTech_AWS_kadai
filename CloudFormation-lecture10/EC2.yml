@@ -29,12 +29,12 @@ Resources:
             - !Ref EC2SG
       Tags:
           - Key: Name
-            Value: !sub{$NameBase}-ec2-a-cf
+            Value: !sub ${NameBase}-ec2-a-cf
 
   EC2SG:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !sub{$NameBase}-ec2-sg-cf
+      GroupName: !sub ${NameBase}-ec2-sg-cf
       GroupDescription: Allow SSH and HTTP access only MyIP
       VpcId: !ImportValue lecture10-vpc-VPCId
       SecurityGroupIngress:
