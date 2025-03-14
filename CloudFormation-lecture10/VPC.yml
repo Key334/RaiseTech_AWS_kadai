@@ -12,6 +12,7 @@ Metadata:
       - Label: 
           default: "Network Configuration"
         Parameters: 
+          - NameBase
           - VPCCIDR
           - PublicSubnetACIDR
           - PublicSubnetCCIDR
@@ -33,10 +34,10 @@ Metadata:
 # Input Parameters
 # ------------------------------------------------------------# 
 Parameters:
- NameBase:
-  Description: this is base name.
-  Type: String
-  Default: RaiseTech
+  NameBase:
+   Description: this is base name.
+   Type: String
+   Default: RaiseTech
 
   VPCCIDR:
     Type: String
