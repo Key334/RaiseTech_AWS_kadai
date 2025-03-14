@@ -37,7 +37,7 @@ Parameters:
   NameBase:
    Description: this is base name.
    Type: String
-   Default: RaiseTech
+   Default: lecture10
 
   VPCCIDR:
     Type: String
