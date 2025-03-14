@@ -76,7 +76,7 @@ Resources:
       InstanceTenancy: default
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-vpc"
+          Value: !Sub "${NameBase}-vpc"
 
 # InternetGateway Create
   InternetGateway: 
@@ -84,7 +84,7 @@ Resources:
     Properties: 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-igw"
+          Value: !Sub "${NameBase}-igw"
 
 # IGW Attach
   InternetGatewayAttachment: 
@@ -105,7 +105,7 @@ Resources:
       VpcId: !Ref VPC 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-public-subnet-a"
+          Value: !Sub "${NameBase}-public-subnet-a"
 
 # Public SubnetC Create
   PublicSubnetC: 
@@ -116,7 +116,7 @@ Resources:
       VpcId: !Ref VPC 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-public-subnet-c"
+          Value: !Sub "${NameBase}-public-subnet-c"
                     
 # Private SubnetA Create
   PrivateSubnetA: 
@@ -127,7 +127,7 @@ Resources:
       VpcId: !Ref VPC 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-private-subnet-a"
+          Value: !Sub "${NameBase}-private-subnet-a"
 
 # Private SubnetC Create
   PrivateSubnetC: 
@@ -138,7 +138,7 @@ Resources:
       VpcId: !Ref VPC 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-private-subnet-c"
+          Value: !Sub "${NameBase}-private-subnet-c"
                     
 # ------------------------------------------------------------#
 #  RouteTable
@@ -150,7 +150,7 @@ Resources:
       VpcId: !Ref VPC 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-public-route-a"
+          Value: !Sub "${NameBase}-public-route-a"
           
 # Public RouteTableC Create
   PublicRouteTableC: 
@@ -159,7 +159,7 @@ Resources:
       VpcId: !Ref VPC 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-public-route-c"
+          Value: !Sub "${NameBase}-public-route-c"
 
 # Private RouteTableA Create
   PrivateRouteTableA: 
@@ -168,7 +168,7 @@ Resources:
       VpcId: !Ref VPC 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-private-route-a"
+          Value: !Sub "${NameBase}-private-route-a"
 
 # Private RouteTableC Create
   PrivateRouteTableC: 
@@ -177,7 +177,7 @@ Resources:
       VpcId: !Ref VPC 
       Tags: 
         - Key: Name
-          Value: !Sub "${PJPrefix}-private-route-c"
+          Value: !Sub "${NameBase}-private-route-c"
 
 # ------------------------------------------------------------#
 # Routing
@@ -237,71 +237,71 @@ Outputs:
   VPC:
     Value: !Ref VPC
     Export:
-      Name: !Sub "${PJPrefix}-vpc"
+      Name: !Sub "${NameBase}-vpc"
 
   VPCCIDR:
     Value: !Ref VPCCIDR
     Export:
-      Name: !Sub "${PJPrefix}-vpc-cidr"
+      Name: !Sub "${NameBase}-vpc-cidr"
 
 # Subnet
   PublicSubnetA:
     Value: !Ref PublicSubnetA
     Export:
-      Name: !Sub "${PJPrefix}-public-subnet-a"
+      Name: !Sub "${NameBase}-public-subnet-a"
 
   PublicSubnetACIDR:
     Value: !Ref PublicSubnetACIDR
     Export:
-      Name: !Sub "${PJPrefix}-public-subnet-a-cidr"
+      Name: !Sub "${NameBase}-public-subnet-a-cidr"
 
   PublicSubnetC:
     Value: !Ref PublicSubnetC
     Export:
-      Name: !Sub "${PJPrefix}-public-subnet-c"
+      Name: !Sub "${NameBase}-public-subnet-c"
 
   PublicSubnetCCIDR:
     Value: !Ref PublicSubnetCCIDR
     Export:
-      Name: !Sub "${PJPrefix}-public-subnet-c-cidr"
+      Name: !Sub "${NameBase}-public-subnet-c-cidr"
 
   PrivateSubnetA:
     Value: !Ref PrivateSubnetA
     Export:
-      Name: !Sub "${PJPrefix}-private-subnet-a"
+      Name: !Sub "${NameBase}-private-subnet-a"
     
   PrivateSubnetACIDR:
     Value: !Ref PrivateSubnetACIDR
     Export:
-      Name: !Sub "${PJPrefix}-private-subnet-a-cidr"
+      Name: !Sub "${NameBase}-private-subnet-a-cidr"
 
   PrivateSubnetC:
     Value: !Ref PrivateSubnetC
     Export:
-      Name: !Sub "${PJPrefix}-private-subnet-c"
+      Name: !Sub "${NameBase}-private-subnet-c"
 
   PrivateSubnetCCIDR:
     Value: !Ref PrivateSubnetCCIDR
     Export:
-      Name: !Sub "${PJPrefix}-private-subnet-c-cidr"
+      Name: !Sub "${NameBase}-private-subnet-c-cidr"
 
 # Route
   PublicRouteTableA:
     Value: !Ref PublicRouteTableA
     Export:
-      Name: !Sub "${PJPrefix}-public-route-a"
+      Name: !Sub "${NameBase}-public-route-a"
 
   PublicRouteTableC:
     Value: !Ref PublicRouteTableC
     Export:
-      Name: !Sub "${PJPrefix}-public-route-c"
+      Name: !Sub "${NameBase}-public-route-c"
 
   PrivateRouteTableA:
     Value: !Ref PrivateRouteTableA
     Export:
-      Name: !Sub "${PJPrefix}-private-route-a"
+      Name: !Sub "${NameBase}-private-route-a"
 
   PrivateRouteTableC:
     Value: !Ref PrivateRouteTableC
     Export:
-      Name: !Sub "${PJPrefix}-private-route-c"
+      Name: !Sub "${NameBase}-private-route-c"
