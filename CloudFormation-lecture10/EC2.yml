@@ -25,7 +25,7 @@ Resources:
       NetworkInterfaces: 
         - AssociatePublicIpAddress: "true"
           DeviceIndex: "0"
-          SubnetId: !ImportValue lecture10-vpc-PublicSubnet1Id
+          SubnetId: subnet-069b497c8557d7e9b
           GroupSet:
             - !Ref EC2SG
       Tags:
@@ -37,7 +37,7 @@ Resources:
     Properties:
       GroupName: lecture10-ec2-sg-cf
       GroupDescription: Allow SSH and HTTP access only MyIP
-      VpcId: !ImportValue lecture10-vpc-VPCId
+      VpcId: vpc-042638713c67febb6
       SecurityGroupIngress:
         # http
         - IpProtocol: tcp
