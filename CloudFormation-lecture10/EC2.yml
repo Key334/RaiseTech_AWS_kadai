@@ -35,7 +35,7 @@ Resources:
     Properties:
       GroupName: ec2-sg-cf
       GroupDescription: Allow SSH and HTTP access only MyIP
-      VpcId: !Ref VPC
+      VpcId: vpc-042638713c67febb6
       SecurityGroupIngress:
         # http
         - IpProtocol: tcp
