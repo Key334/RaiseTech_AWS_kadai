@@ -8,8 +8,9 @@ Parameters:
     Default: lecture10
 
   KeyName:
-    Description: The EC2 Key Pair to allow SSH access to the instance
-    Type: "AWS::EC2::KeyPair::KeyName"
+    Description: The name of the EC2 Key Pair
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: Must be the name of an existing EC2 Key Pair
   
   MyIP:
     Description: IP address allowed to access EC2
