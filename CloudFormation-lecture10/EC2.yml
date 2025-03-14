@@ -2,6 +2,10 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: EC2 create
 
 Parameters: 
+  NameBase: 
+    Description: this is base name.
+    Type: String
+    Default: lecture10
   KeyName:
     Description: The EC2 Key Pair to allow SSH access to the instance
     Type: "AWS::EC2::KeyPair::KeyName"
@@ -20,22 +24,19 @@ Resources:
       NetworkInterfaces: 
         - AssociatePublicIpAddress: "true"
           DeviceIndex: "0"
-          SubnetId: !Ref PubSub
+          SubnetId: !ImportValue lecture10-vpc-PublicSubnet1Id
           GroupSet:
             - !Ref EC2SG
-      UserData: !Base64 |
-        #!/bin/bash
-        sudo yum install -y git
       Tags:
           - Key: Name
-            Value: ec2-a-cf
+            Value: !sub{$NameBase}-ec2-a-cf
 
   EC2SG:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: ec2-sg-cf
+      GroupName: !sub{$NameBase}-ec2-sg-cf
       GroupDescription: Allow SSH and HTTP access only MyIP
-      VpcId: vpc-042638713c67febb6
+      VpcId: !ImportValue lecture10-vpc-VPCId
       SecurityGroupIngress:
         # http
         - IpProtocol: tcp
