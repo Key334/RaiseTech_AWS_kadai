@@ -10,11 +10,12 @@ Parameters:
   KeyName:
     Description: The name of the EC2 Key Pair
     Type: AWS::EC2::KeyPair::KeyName
-    ConstraintDescription: Must be the name of an existing EC2 Key Pair
+    Default: KEY1.pem
   
   MyIP:
     Description: IP address allowed to access EC2
     Type: String
+    Default: 153.187.14.1
 
 Resources:
   EC2: 
