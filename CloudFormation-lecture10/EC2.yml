@@ -16,7 +16,7 @@ Resources:
     Properties: 
       ImageId: ami-00d101850e971728d
       KeyName: !Ref KeyName
-      InstanceType: t2.mideum
+      InstanceType: t2.medium
       NetworkInterfaces: 
         - AssociatePublicIpAddress: "true"
           DeviceIndex: "0"
