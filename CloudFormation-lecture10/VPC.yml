@@ -2,12 +2,6 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: 
   VPC and Subnet Create
 
-Parameters:
- NameBase:
-  Description: this is base name.
-  Type: String
-  Default: RaiseTech
-
 Metadata: 
   "AWS::CloudFormation::Interface": 
     ParameterGroups: 
@@ -39,8 +33,10 @@ Metadata:
 # Input Parameters
 # ------------------------------------------------------------# 
 Parameters:
-  PJPrefix:
-    Type: String
+ NameBase:
+  Description: this is base name.
+  Type: String
+  Default: RaiseTech
 
   VPCCIDR:
     Type: String
