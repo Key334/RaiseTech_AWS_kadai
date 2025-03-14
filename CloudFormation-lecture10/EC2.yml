@@ -6,7 +6,7 @@ Parameters:
     Description: this is base name.
     Type: String
     Default: lecture10
-    
+
   KeyName:
     Description: The EC2 Key Pair to allow SSH access to the instance
     Type: "AWS::EC2::KeyPair::KeyName"
@@ -30,12 +30,12 @@ Resources:
             - !Ref EC2SG
       Tags:
           - Key: Name
-            Value: !sub ${NameBase}-ec2-a-cf
+            Value: !Sub ${NameBase}-ec2-a-cf
 
   EC2SG:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !sub ${NameBase}-ec2-sg-cf
+      GroupName: !Sub ${NameBase}-ec2-sg-cf
       GroupDescription: Allow SSH and HTTP access only MyIP
       VpcId: !ImportValue lecture10-vpc-VPCId
       SecurityGroupIngress:
