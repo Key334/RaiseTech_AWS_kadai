@@ -12,7 +12,7 @@ Parameters:
     Type: AWS::EC2::KeyPair::KeyName
     Default: KEY1
   
-  MyIP:
+  MyCidrIp:
     Description: IP address allowed to access EC2
     Type: String
     Default: 153.187.14.1/32
@@ -45,12 +45,12 @@ Resources:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
-          CidrIp: !Ref MyIP
+          CidrIp: !Ref MyCidrIp
         # ssh
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
-          CidrIp: !Ref MyIP
+          CidrIp: !Ref MyCidrIp
 
 Outputs:
   EC2PublicIP:
