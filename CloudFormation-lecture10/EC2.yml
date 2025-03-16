@@ -15,7 +15,7 @@ Parameters:
   MyCidrIp:
     Description: IP address allowed to access EC2
     Type: String
-    Default: 153.187.14.1/32
+    Default: 133.106.194.106/32
 
 Resources:
   EC2: 
