@@ -7,7 +7,7 @@ Resources:
     # S3バケット作成
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Ref S3Bucket
+      BucketName: lecture10-test
       # 暗号化についての設定
       BucketEncryption:
         ServerSideEncryptionConfiguration: 
@@ -27,4 +27,4 @@ Resources:
         Status: Suspended 
       Tags:
         - Key: Name
-          Value: !Ref S3Bucket
+          Value: lecture10-test
