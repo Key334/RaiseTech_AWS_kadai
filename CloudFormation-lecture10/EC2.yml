@@ -12,13 +12,11 @@ Parameters:
  KeyName:
   Description: The name of the EC2 Key Pair
   Type: AWS::EC2::KeyPair::KeyName
-  Default: KEY1
   ConstraintDescription: Must be the name of an existing EC2 Key Pair
 
  MyCidrIp:
   NoEcho: true
   Type: String
-  Default: 153.187.14.1/32
   Description: Enter the CIDR IP for the security group ingress rule
 
 
@@ -61,7 +59,7 @@ Resources:
        DeviceIndex: 0
        GroupSet:
         -  !Ref EC2SecurityGroup
-       SubnetId: !ImportValue lecture10-VPC-PublicSubnet1Id
+       SubnetId: !ImportValue RaiseTech2-VPC-PublicSubnet1Id
     BlockDeviceMappings: 
      - DeviceName: /dev/xvda
        Ebs:
