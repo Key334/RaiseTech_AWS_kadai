@@ -1,58 +1,97 @@
+
 AWSTemplateFormatVersion: "2010-09-09"
-Description: EC2 create
+Description: EC2 and sg create with IAM role
 
-Parameters: 
-  NameBase: 
-    Description: this is base name.
-    Type: String
-    Default: lecture10
 
-  KeyName:
-    Description: The name of the EC2 Key Pair
-    Type: AWS::EC2::KeyPair::KeyName
-    Default: KEY1
-  
-  MyCidrIp:
-    Description: IP address allowed to access EC2
-    Type: String
-    Default: 153.187.14.1/32
+Parameters:
+ NameBase: 
+  Description: this is base name.
+  Type: String
+  Default: lecture10
 
-Resources:
-  EC2: 
-    Type: AWS::EC2::Instance
-    Properties: 
-      ImageId: ami-00d101850e971728d
-      KeyName: !Ref KeyName
-      InstanceType: t2.medium
-      NetworkInterfaces: 
-        - AssociatePublicIpAddress: "true"
-          DeviceIndex: "0"
-          SubnetId: subnet-069b497c8557d7e9b
-          GroupSet:
-            - !Ref EC2SG
-      Tags:
-          - Key: Name
-            Value: lecture10-ec2-a-cf
+ KeyName:
+  Description: The name of the EC2 Key Pair
+  Type: AWS::EC2::KeyPair::KeyName
+  Default: KEY1
+  ConstraintDescription: Must be the name of an existing EC2 Key Pair
 
-  EC2SG:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupName: lecture10-ec2-sg-cf
-      GroupDescription: Allow SSH and HTTP access only MyIP
-      VpcId: vpc-042638713c67febb6
-      SecurityGroupIngress:
-        # http
-        - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          CidrIp: 0.0.0.0/0
-        # ssh
-        - IpProtocol: tcp
-          FromPort: 22
-          ToPort: 22
-          CidrIp: !Ref MyCidrIp
+ MyCidrIp:
+  NoEcho: true
+  Type: String
+  Default: 153.187.14.1/32
+  Description: Enter the CIDR IP for the security group ingress rule
 
-Outputs:
-  EC2PublicIP:
-    Value: !GetAtt EC2.PublicIp
-    Description: Public IP of EC2 instance
+
+Resources: 
+ # SecurityGroup
+ EC2SecurityGroup:
+  Type: AWS::EC2::SecurityGroup
+  Properties:
+    GroupDescription: Allow SSH and HTTP access
+    VpcId: !ImportValue lecture10-VPC-VPCId
+    Tags:
+        - Key: Name
+          Value: !Sub ${NameBase}-sg-ec2-lecture10
+    # インバウンドルール
+    SecurityGroupIngress: 
+     # ssh
+     - IpProtocol: tcp
+       FromPort: 22
+       ToPort: 22
+       CidrIp: !Ref MyCidrIp
+     
+     # HTTP
+     - IpProtocol: tcp
+       FromPort: 80
+       ToPort: 80
+       CidrIp: 10.1.0.0/16
+
+
+ # EC2
+ EC2:
+  Type: AWS::EC2::Instance
+  Properties:
+    # AmazonLinux2 AMI ID
+    ImageId: ami-0eda63ec8af4f056e
+    # keypair
+    KeyName: !Ref KeyName
+    InstanceType: t2.micro
+    NetworkInterfaces: 
+     - AssociatePublicIpAddress: true
+       DeviceIndex: 0
+       GroupSet:
+        -  !Ref EC2SecurityGroup
+       SubnetId: !ImportValue lecture10-VPC-PublicSubnet1Id
+    BlockDeviceMappings: 
+     - DeviceName: /dev/xvda
+       Ebs:
+         VolumeType: gp2
+         DeleteOnTermination: true
+         VolumeSize: 16
+    # IAMロールアタッチ
+    IamInstanceProfile: !Ref InstanceProfile
+    Tags:
+     - Key: Name
+       Value: !Sub ${NameBase}-ec2-lecture10
+
+
+ # IAM Instance Profile
+ InstanceProfile:
+  Type: AWS::IAM::InstanceProfile
+  Properties: 
+    Roles: 
+      - raisetech-lecture05-ec2
+
+
+Outputs: 
+ EC2Id: 
+  Description: The ID of the created EC2 instance
+  Value: !Ref EC2
+  Export:
+   Name: !Sub ${AWS::StackName}-EC2Id
+
+ EC2SGId:
+  Description: The ID of the created EC2 SecurityGroup
+  Value: !Ref EC2SecurityGroup
+  Export:
+   Name: !Sub ${AWS::StackName}-EC2SGId
