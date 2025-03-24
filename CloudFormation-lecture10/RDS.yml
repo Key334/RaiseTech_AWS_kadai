@@ -23,7 +23,7 @@ Resources:
       - !ImportValue lecture10-VPC-PrivateSubnet2Id
       Tags:
       - Key: Name
-        Value: raisetech2-lecture10-DBSubnetGroup
+        Value: lecture10-DBSubnetGroup
 
 
   # RDSインスタンス作成
@@ -60,14 +60,14 @@ Resources:
       - !Ref RDSSecurityGroup
       Tags:
       - Key: Name
-        Value: raisetech2-lecture10-RDS
+        Value: lecture10-RDS
 
 
   RDSSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       VpcId: !ImportValue lecture10-VPC-VPCId
-      GroupName: raisetech2-lecture10-RDS-sg
+      GroupName: lecture10-RDS-sg
       GroupDescription: for RDS
       Tags:
         - Key: Name
