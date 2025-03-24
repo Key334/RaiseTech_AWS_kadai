@@ -25,7 +25,7 @@ Resources:
   Type: AWS::EC2::SecurityGroup
   Properties:
     GroupDescription: Allow SSH and HTTP access
-    VpcId: !ImportValue lecture10-VPC-VPCId
+    VpcId: !ImportValue lecture10-vpc-cf-VPCId
     Tags:
         - Key: Name
           Value: !Sub ${NameBase}-sg-ec2-lecture10
@@ -58,7 +58,7 @@ Resources:
        DeviceIndex: 0
        GroupSet:
         -  !Ref EC2SecurityGroup
-       SubnetId: !ImportValue lecture10-VPC-PublicSubnet1Id
+       SubnetId: !ImportValue lecture10-ec2-cf-PublicSubnet1Id
     BlockDeviceMappings: 
      - DeviceName: /dev/xvda
        Ebs:
