@@ -66,7 +66,7 @@ Resources:
   RDSSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      VpcId: !ImportValue lecture10-VPC-VPCId
+      VpcId: !ImportValue RaiseTech2-VPC-VPCId
       GroupName: lecture10-RDS-sg
       GroupDescription: for RDS
       Tags:
