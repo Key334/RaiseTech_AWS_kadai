@@ -76,7 +76,8 @@ Resources:
  InstanceProfile:
   Type: AWS::IAM::InstanceProfile
   Properties: 
-    Roles: lecture05
+    Roles: 
+      - lecture05
 
 
 Outputs: 
