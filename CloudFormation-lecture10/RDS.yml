@@ -19,8 +19,8 @@ Resources:
       DBSubnetGroupDescription: For RDS
       DBSubnetGroupName: raisetech2-lecture10-DBSubnetGroup
       SubnetIds:
-      - !ImportValue lecture10-VPC-PrivateSubnet1Id
-      - !ImportValue lecture10-VPC-PrivateSubnet2Id
+      - !ImportValue lecture10-vpc-cf-PrivateSubnet1Id
+      - !ImportValue lecture10-vpc-cf-PrivateSubnet2Id
       Tags:
       - Key: Name
         Value: raisetech2-lecture10-DBSubnetGroup
@@ -66,7 +66,7 @@ Resources:
   RDSSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      VpcId: !ImportValue lecture10-VPC-VPCId
+      VpcId: !ImportValue lecture10-vpc-cf-VPCId
       GroupName: raisetech2-lecture10-RDS-sg
       GroupDescription: for RDS
       Tags:
@@ -77,4 +77,4 @@ Resources:
         - IpProtocol: tcp
           FromPort: 3306
           ToPort: 3306
-          SourceSecurityGroupId: !ImportValue lecture10-EC2-EC2SGId
+          SourceSecurityGroupId: !ImportValue lecture10-ec2-cf-EC2SGId
