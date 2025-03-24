@@ -13,7 +13,7 @@ Resources:
  TargetGroup: 
   Type: AWS::ElasticLoadBalancingV2::TargetGroup
   Properties: 
-    VpcId: !ImportValue RaiseTech2-VPC-VPCId
+    VpcId: !ImportValue lecture10-VPC-VPCId
     Name: !Sub ${NameBase}-tg
     IpAddressType: ipv4
     # ターゲットにトラフィックをルーティングするために使用するプロトコル
@@ -65,8 +65,8 @@ Resources:
       SecurityGroups:
         - !Ref ALBSecurityGroup
       Subnets: 
-        - !ImportValue RaiseTech2-VPC-PublicSubnet1Id
-        - !ImportValue RaiseTech2-VPC-PublicSubnet2Id
+        - !ImportValue lecture10-VPC-PublicSubnet1Id
+        - !ImportValue lecture10-VPC-PublicSubnet2Id
 
 
  # リスナー設定
