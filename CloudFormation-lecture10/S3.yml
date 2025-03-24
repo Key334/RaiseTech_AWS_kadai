@@ -27,4 +27,4 @@ Resources:
         Status: Suspended 
       Tags:
         - Key: Name
-          Value: lecture10-test
+          Value: !Ref S3Bucket
