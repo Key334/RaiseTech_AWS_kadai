@@ -7,7 +7,7 @@ Resources:
     # S3バケット作成
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: lecture10-test
+      BucketName: !Ref S3Bucket
       # 暗号化についての設定
       BucketEncryption:
         ServerSideEncryptionConfiguration: 
