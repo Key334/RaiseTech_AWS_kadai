@@ -77,7 +77,7 @@ Resources:
   Type: AWS::IAM::InstanceProfile
   Properties: 
     Roles: 
-      - raisetech-lecture05-ec2
+      - raisetech-lecture05
 
 
 Outputs: 
