@@ -58,7 +58,7 @@ Resources:
        DeviceIndex: 0
        GroupSet:
         -  !Ref EC2SecurityGroup
-       SubnetId: !ImportValue lecture10-ec2-cf-PublicSubnet1Id
+       SubnetId: !ImportValue lecture10-vpc-cf-PublicSubnet1Id
     BlockDeviceMappings: 
      - DeviceName: /dev/xvda
        Ebs:
