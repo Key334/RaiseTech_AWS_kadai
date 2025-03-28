@@ -7,7 +7,7 @@ Resources:
     # S3バケット作成
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: lecture10-test
+      BucketName: raisetech-lecture10-cf
       # 暗号化についての設定
       BucketEncryption:
         ServerSideEncryptionConfiguration: 
@@ -27,4 +27,4 @@ Resources:
         Status: Suspended 
       Tags:
         - Key: Name
-          Value: lecture10-test
+          Value: raisetech
