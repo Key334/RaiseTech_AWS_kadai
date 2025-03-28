@@ -2,11 +2,11 @@
 * ※cf→cloudformation
 
 ## cfに使用したymlファイル
-* [VPC.yml](VPC.yml)
-* [EC2.yml](EC2.yml)
-* [RDS.yml](RDS.yml)
-* [ELB.yml](ELB.yml)
-* [S3.yml](S3.yml)
+* [VPC.yml](CloudFormation-lecture10/VPC.yml)
+* [EC2.yml](CloudFormation-lecture10/EC2.yml)
+* [RDS.yml](CloudFormation-lecture10/RDS.yml)
+* [ELB.yml](CloudFormation-lecture10/ELB.yml)
+* [S3.yml](CloudFormation-lecture10/S3.yml)
 
 ## cfで作成したリソース
 * VPC
