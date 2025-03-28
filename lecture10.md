@@ -1,4 +1,25 @@
 # 第１０回課題
-## 参考にしたサイト
-* [CloudFormationを使ってVPCを構築する](https://qiita.com/okubot55/items/b18a5dd5166f1ec2696c)
-* [CloudFormationでEC2を構築してみた](https://qiita.com/tyoshitake/items/c5176c0ef4de8d7cf5d8)
+* ※cf→cloudformation
+
+## cfに使用したymlファイル
+* [VPC.yml](VPC.yml)
+* [EC2.yml](EC2.yml)
+* [RDS.yml](RDS.yml)
+* [ELB.yml](ELB.yml)
+* [S3.yml](S3.yml)
+
+## cfで作成したリソース
+* VPC[]()
+* EC2[]()
+* RDS[]()
+* ELB[]()
+* S3[]()
+
+## cfで作成したリソースに接続できるか確認
+* cfで作成したEC2にssh接続できるか[]() 
+* cfで作成したEC2から同じくcfで作成したRDSに接続できるか[]()
+
+## 感想
+* cfで作成することで、ymlファイルさえあれば全く同じ環境を必要なときに何回でも作れる。
+* 正直設定ファイルを記述することはとても難しく、先輩受講生のgithubを参考にさせていただいた。しかし、いくつかエラーが出たのでそのたびにchatGPTに質問して解決することができた。
+* s3のnamebaseが先輩受講生のものそのままだと一意の名前ではないのでエラーが出て作成できなかった。名前を変更し作成することができた。
