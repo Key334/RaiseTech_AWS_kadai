@@ -66,50 +66,50 @@ Resources:
          DeleteOnTermination: true
          VolumeSize: 16
     # IAMロールアタッチ
-      
+
   S3AccessRole:
-    Type: "AWS::IAM::Role"
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: "2012-10-17"
-        Statement: 
-          - 
-            Effect: "Allow"
-            Principal: 
+   Type: "AWS::IAM::Role"
+   Properties:
+    AssumeRolePolicyDocument:
+      Version: "2012-10-17"
+      Statement: 
+        - 
+         Effect: "Allow"
+         Principal: 
               Service: 
-                - "ec2.amazonaws.com"
+              - "ec2.amazonaws.com"
               Action: 
                 - "sts:AssumeRole"
-        Path: "/"
-        Tags:
-            - Key: Name
-              Value: !Sub "lecture10-iamrole-${NameBase}"
+              Path: "/"
+              Tags:
+              - Key: Name
+                Value: !Sub "lecture10-iamrole-${NameBase}"
   
   S3AccessPolicies:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyName: s3access
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-        - Effect: Allow
-          Action:
-            - "s3:ListAllMyBuckets"
-            - "s3:GetBucketLocation"
-          Resource: "arn:aws:s3:::*"
-        - Effect: Allow
-          Action: "*"
-          Resource:
-            - !Sub "arn:aws:s3:::s3-bucket-${NameBase}"
-            - !Sub "arn:aws:s3:::s3-bucket-${NameBase}/*"
-      Roles:
+   Type: AWS::IAM::Policy
+   Properties:
+    PolicyName: s3access
+    PolicyDocument:
+      Version: '2012-10-17'
+      Statement:
+      - Effect: Allow
+        Action:
+          - "s3:ListAllMyBuckets"
+          - "s3:GetBucketLocation"
+        Resource: "arn:aws:s3:::*"
+      - Effect: Allow
+        Action: "*"
+        Resource:
+          - !Sub "arn:aws:s3:::s3-bucket-${NameBase}"
+          - !Sub "arn:aws:s3:::s3-bucket-${NameBase}/*"
+    Roles:
       - !Ref S3AccessRole
 
   S3AccessInstanceProfile:
-    Type: AWS::IAM::InstanceProfile
-    Properties:
-      Path: "/"
-      Roles:
+   Type: AWS::IAM::InstanceProfile
+   Properties:
+    Path: "/"
+    Roles:
       - !Ref S3AccessRole
 
 
