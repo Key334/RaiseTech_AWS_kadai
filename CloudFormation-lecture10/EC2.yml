@@ -41,7 +41,7 @@ Resources:
      - IpProtocol: tcp
        FromPort: 80
        ToPort: 80
-       CidrIp: 10.1.0.0/16
+       CidrIp: 0.0.0.0/0
 
 
  # EC2
@@ -66,18 +66,29 @@ Resources:
          DeleteOnTermination: true
          VolumeSize: 16
     # IAMロールアタッチ
-    IamInstanceProfile: !Ref InstanceProfile
+    IamInstanceProfile: !Ref S3AccessRole
     Tags:
      - Key: Name
        Value: !Sub ${NameBase}-ec2-lecture10
 
 
- # IAM Instance Profile
- InstanceProfile:
-  Type: AWS::IAM::InstanceProfile
-  Properties: 
-    Roles: 
-      - lecture05
+ S3AccessRole:
+      Type: "AWS::IAM::Role"
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement: 
+            - 
+              Effect: "Allow"
+              Principal: 
+                Service: 
+                  - "ec2.amazonaws.com"
+              Action: 
+                - "sts:AssumeRole"
+        Path: "/"
+        Tags:
+            - Key: Name
+              Value: !Sub "lecture10-iamrole-${NameBase}" 
 
 
 Outputs: 
@@ -92,4 +103,3 @@ Outputs:
   Value: !Ref EC2SecurityGroup
   Export:
    Name: !Sub ${AWS::StackName}-EC2SGId
-   
