@@ -21,95 +21,97 @@ Parameters:
 
 Resources: 
  # SecurityGroup
- EC2SecurityGroup:
-  Type: AWS::EC2::SecurityGroup
-  Properties:
-    GroupDescription: Allow SSH and HTTP access
-    VpcId: !ImportValue lecture10-vpc-cf-VPCId
-    Tags:
-        - Key: Name
-          Value: !Sub ${NameBase}-sg-ec2-lecture10
-    # インバウンドルール
-    SecurityGroupIngress: 
-     # ssh
-     - IpProtocol: tcp
-       FromPort: 22
-       ToPort: 22
-       CidrIp: !Ref MyCidrIp
-     
-     # HTTP
-     - IpProtocol: tcp
-       FromPort: 80
-       ToPort: 80
-       CidrIp: 0.0.0.0/0
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH and HTTP access
+      VpcId: !ImportValue lecture10-vpc-cf-VPCId
+      Tags:
+          - Key: Name
+            Value: !Sub ${NameBase}-sg-ec2-lecture10
+      # インバウンドルール
+      SecurityGroupIngress: 
+      # ssh
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: !Ref MyCidrIp
+      
+      # HTTP
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
 
 
  # EC2
- EC2:
-  Type: AWS::EC2::Instance
-  Properties:
-    # AmazonLinux2 AMI ID
-    ImageId: ami-0eda63ec8af4f056e
-    # keypair
-    KeyName: !Ref KeyName
-    InstanceType: t2.micro
-    NetworkInterfaces: 
-     - AssociatePublicIpAddress: true
-       DeviceIndex: 0
-       GroupSet:
-        -  !Ref EC2SecurityGroup
-       SubnetId: !ImportValue lecture10-vpc-cf-PublicSubnet1Id
-    BlockDeviceMappings: 
-     - DeviceName: /dev/xvda
-       Ebs:
-         VolumeType: gp2
-         DeleteOnTermination: true
-         VolumeSize: 16
-# IAMロール
- S3AccessRole:
-   Type: "AWS::IAM::Role"
-   Properties:
-    AssumeRolePolicyDocument:
-      Version: "2012-10-17"
-      Statement: 
-        - 
-         Effect: "Allow"
-         Principal: 
-              Service: 
-              - "ec2.amazonaws.com"
-              Action: 
-                - "sts:AssumeRole"
-              Path: "/"
-              Tags:
-              - Key: Name
-                Value: !Sub "lecture10-iamrole-${NameBase}"
-  
- S3AccessPolicies:
-   Type: AWS::IAM::Policy
-   Properties:
-    PolicyName: s3access
-    PolicyDocument:
-      Version: '2012-10-17'
-      Statement:
-      - Effect: Allow
-        Action:
-          - "s3:ListAllMyBuckets"
-          - "s3:GetBucketLocation"
-        Resource: "arn:aws:s3:::*"
-      - Effect: Allow
-        Action: "*"
-        Resource:
-          - !Sub "arn:aws:s3:::s3-bucket-${NameBase}"
-          - !Sub "arn:aws:s3:::s3-bucket-${NameBase}/*"
-    Roles:
-      - !Ref S3AccessRole
+  EC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      # AmazonLinux2 AMI ID
+      ImageId: ami-0eda63ec8af4f056e
+      # keypair
+      KeyName: !Ref KeyName
+      InstanceType: t2.micro
+      NetworkInterfaces: 
+      - AssociatePublicIpAddress: true
+        DeviceIndex: 0
+        GroupSet:
+          -  !Ref EC2SecurityGroup
+        SubnetId: !ImportValue lecture10-vpc-cf-PublicSubnet1Id
+      BlockDeviceMappings: 
+      - DeviceName: /dev/xvda
+        Ebs:
+          VolumeType: gp2
+          DeleteOnTermination: true
+          VolumeSize: 16
 
- S3AccessInstanceProfile:
-   Type: AWS::IAM::InstanceProfile
-   Properties:
-    Path: "/"
-    Roles:
-      - !Ref S3AccessRole
+  # IAM Role
+  S3AccessRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement: 
+          - Effect: "Allow"
+            Principal: 
+              Service: 
+                - "ec2.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      Path: "/"
+      Tags:
+        - Key: Name
+          Value: !Sub "lecture10-iamrole-${NameBase}"
+
+  # IAM Policy
+  S3AccessPolicies:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: s3access
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - "s3:ListAllMyBuckets"
+              - "s3:GetBucketLocation"
+            Resource: "arn:aws:s3:::*"
+          - Effect: Allow
+            Action: "*"
+            Resource:
+              - !Sub "arn:aws:s3:::s3-bucket-${NameBase}"
+              - !Sub "arn:aws:s3:::s3-bucket-${NameBase}/*"
+      Roles:
+        - !Ref S3AccessRole
+
+  # Instance Profile
+  S3AccessInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Path: "/"
+      Roles:
+        - !Ref S3AccessRole
 
 
 Outputs: 
