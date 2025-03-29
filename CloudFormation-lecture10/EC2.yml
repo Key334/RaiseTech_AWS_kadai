@@ -92,3 +92,4 @@ Outputs:
   Value: !Ref EC2SecurityGroup
   Export:
    Name: !Sub ${AWS::StackName}-EC2SGId
+   

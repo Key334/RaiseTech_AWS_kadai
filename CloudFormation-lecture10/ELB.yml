@@ -82,7 +82,6 @@ Resources:
           # ルールアクションタイプ
           # forwardは指定されたターゲットグループにリクエストを転送
           Type: forward
-      
 
 
  # ALBSecurityGroup
