@@ -10,6 +10,11 @@ Parameters:
     MinLength: 8
     MaxLength: 41
 
+  NameBase: 
+    Description: this is base name
+    Type: String
+    Default: raisetech2
+
 
 Resources:
   # サブネットグループ作成
@@ -56,11 +61,10 @@ Resources:
       # RDS削除に生成されるスナップショットの自動削除
       DeleteAutomatedBackups: true
       DBSubnetGroupName: !Ref RDSSubnetGroup
-      VPCSecurityGroups:
-      - !Ref RDSSecurityGroup
+      VPCSecurityGroups: !Ref RDSSecurityGroup
       Tags:
-      - Key: Name
-        Value: raisetech2-lecture10-RDS
+        - Key: Name
+          Value: !Sub ${NameBase}-lecture10-RDS
 
 
   RDSSecurityGroup:
@@ -78,4 +82,3 @@ Resources:
           FromPort: 3306
           ToPort: 3306
           SourceSecurityGroupId: !ImportValue lecture10-ec2-cf-EC2SGId
-          
