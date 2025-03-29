@@ -78,3 +78,4 @@ Resources:
           FromPort: 3306
           ToPort: 3306
           SourceSecurityGroupId: !ImportValue lecture10-ec2-cf-EC2SGId
+          
