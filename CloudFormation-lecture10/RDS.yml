@@ -82,4 +82,4 @@ Resources:
         - IpProtocol: tcp
           FromPort: 3306
           ToPort: 3306
-          SourceSecurityGroupId: !ImportValue lecture10-ec2-cf-EC2SGId
+          SourceSecurityGroupId: !ImportValue lecture10-ec2-cf-2-EC2SGId
