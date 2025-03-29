@@ -61,7 +61,8 @@ Resources:
       # RDS削除に生成されるスナップショットの自動削除
       DeleteAutomatedBackups: true
       DBSubnetGroupName: !Ref RDSSubnetGroup
-      VPCSecurityGroups: !Ref RDSSecurityGroup
+      VPCSecurityGroups:
+       !Ref RDSSecurityGroup
       Tags:
         - Key: Name
           Value: !Sub ${NameBase}-lecture10-RDS
