@@ -65,9 +65,8 @@ Resources:
          VolumeType: gp2
          DeleteOnTermination: true
          VolumeSize: 16
-    # IAMロールアタッチ
-
-  S3AccessRole:
+# IAMロール
+ S3AccessRole:
    Type: "AWS::IAM::Role"
    Properties:
     AssumeRolePolicyDocument:
@@ -85,7 +84,7 @@ Resources:
               - Key: Name
                 Value: !Sub "lecture10-iamrole-${NameBase}"
   
-  S3AccessPolicies:
+ S3AccessPolicies:
    Type: AWS::IAM::Policy
    Properties:
     PolicyName: s3access
@@ -105,7 +104,7 @@ Resources:
     Roles:
       - !Ref S3AccessRole
 
-  S3AccessInstanceProfile:
+ S3AccessInstanceProfile:
    Type: AWS::IAM::InstanceProfile
    Properties:
     Path: "/"
