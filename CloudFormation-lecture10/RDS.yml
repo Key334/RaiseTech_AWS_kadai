@@ -62,7 +62,7 @@ Resources:
       DeleteAutomatedBackups: true
       DBSubnetGroupName: !Ref RDSSubnetGroup
       VPCSecurityGroups:
-       !Ref RDSSecurityGroup
+       - !Ref RDSSecurityGroup
       Tags:
         - Key: Name
           Value: !Sub ${NameBase}-lecture10-RDS
