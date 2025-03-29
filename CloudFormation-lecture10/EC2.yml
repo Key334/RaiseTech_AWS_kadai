@@ -66,10 +66,6 @@ Resources:
          DeleteOnTermination: true
          VolumeSize: 16
     # IAMロールアタッチ
-    IamInstanceProfile: !Ref S3AccessRole
-    Tags:
-     - Key: Name
-       Value: !Sub ${NameBase}-ec2-lecture10
       
   S3AccessRole:
     Type: "AWS::IAM::Role"
