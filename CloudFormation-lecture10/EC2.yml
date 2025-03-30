@@ -65,6 +65,8 @@ Resources:
           VolumeType: gp2
           DeleteOnTermination: true
           VolumeSize: 16
+      IamInstanceProfile: !Ref S3AccessInstanceProfile
+        
 
   # IAM Role
   S3AccessRole:
@@ -94,8 +96,10 @@ Resources:
         Statement:
           - Effect: Allow
             Action:
-              - "s3:ListAllMyBuckets"
-              - "s3:GetBucketLocation"
+              - "s3:PutObject"
+              - "s3:GetObject"
+              - "s3:DeleteObject"
+              - "s3:ListBucket"
             Resource: "arn:aws:s3:::*"
           - Effect: Allow
             Action: "*"
