@@ -6,7 +6,7 @@ Parameters:
  NameBase: 
   Description: this is base name.
   Type: String
-  Default: raisetech2
+  Default: raisetech
 
  KeyName:
   Description: The name of the EC2 Key Pair
@@ -110,8 +110,8 @@ Resources:
           - Effect: Allow
             Action: "*"
             Resource:
-              - !Sub "arn:aws:s3:::s3-bucket-${NameBase}"
-              - !Sub "arn:aws:s3:::s3-bucket-${NameBase}/*"
+              - !Sub "arn:aws:s3:::${NameBase}-lecture10-cf"
+              - !Sub "arn:aws:s3:::${NameBase}-lecture10-cf/*"
       Roles:
         - !Ref S3AccessRole
 
