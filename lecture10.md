@@ -12,7 +12,9 @@
 * VPC
 ![vpc](images/AWS_lecture10_evi/cfで作成したvpc%202025-03-28%20121958.png)
 * EC2
-![ec2](images/AWS_lecture10_evi/CFnで作成したEC2(4)2025-03-30%20114228.png)
+![ec2](images/AWS_lecture10_evi/CFnで作成したEC2(5)2025-03-31%20145025.png)
+  - EC2のSGのインバウンド・アウトバウンド
+  ![EC2のインバウンド・アウトバウンド](images/AWS_lecture10_evi/EC2のインバウンド・アウトバウンド2025-03-31%20145125.png)
   - EC2に付与したロールが機能しているか動作確認
   * ロールが認識されているか確認→実際に S3 へアクセスできるか確認
   ![EC2に付与したロールが機能しているか動作確認](images/AWS_lecture10_evi/EC2に付与したロールが機能しているか動作確認2025-03-30%20113554.png)
