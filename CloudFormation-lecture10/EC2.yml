@@ -41,7 +41,7 @@ Resources:
       - IpProtocol: tcp
         FromPort: 80
         ToPort: 80
-        SourceSecurityGroupId: SourceSecurityGroupId: !ImportValue lecture10-alb-sg-id
+        SourceSecurityGroupId: !ImportValue lecture10-alb-sg-id
 
       # HTTP
       - IpProtocol: tcp
