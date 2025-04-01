@@ -84,27 +84,6 @@ Resources:
           Type: forward
 
 
- # ALBSecurityGroup
- ALBSecurityGroup:
-  Type: AWS::EC2::SecurityGroup
-  Properties:
-    VpcId: !ImportValue lecture10-vpc-cf-VPCId
-    GroupDescription: Allow HTTP access
-    GroupName: !Sub ${NameBase}-alb-sg
-    Tags:
-        - Key: Name
-          Value: !Sub ${NameBase}-alb-sg
- # インバウンドルール
-    SecurityGroupIngress: 
-     - IpProtocol: tcp
-       FromPort: 80
-       ToPort: 80
-       CidrIp: 0.0.0.0/0
 
 
-Outputs:
-  ALBSecurityGroupId:
-    Description: Security Group for ALB
-    Value: !Ref ALBSecurityGroup
-    Export:
-      Name: lecture10-alb-sg-id       
+
