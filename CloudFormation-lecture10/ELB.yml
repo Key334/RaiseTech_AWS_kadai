@@ -63,7 +63,7 @@ Resources:
       # ロードバランサーの IP アドレスタイプ
       IpAddressType: ipv4
       SecurityGroups:
-        - !Ref ALBSecurityGroup
+        - !ImportValue lecture10-alb-sg-id
       Subnets: 
         - !ImportValue lecture10-vpc-cf-PublicSubnet1Id
         - !ImportValue lecture10-vpc-cf-PublicSubnet2Id
