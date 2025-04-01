@@ -14,14 +14,14 @@
 * EC2
 ![ec2](images/AWS_lecture10_evi/CFnで作成したEC2(5)2025-03-31%20145025.png)
   - EC2のインバウンド
-  ![EC2のインバウンド](images/AWS_lecture10_evi/ec2のインバウンド2025-03-31%20153611.png)
+  ![EC2のインバウンド](images/AWS_lecture10_evi/CFnで作成したEC2のインバウンド2025-04-01%20131218.png)
   - EC2に付与したロールが機能しているか動作確認
     * 実際に S3 へアクセスできるか確認
   ![付与したロールが機能しているか動作確認](images/AWS_lecture10_evi/付与したロールの動作確認2025-03-31%20162027.png)
 * RDS
 ![rds](images/AWS_lecture10_evi/CFnで作成したDBS%202025-03-29%20184059.png)
 * ELB
-![elb](images/AWS_lecture10_evi/cfで作成したalb%202025-03-28%20122439.png)
+![elb](images/AWS_lecture10_evi/CFnで作成したELB2025-04-01%20131113.png)
 * S3
 ![s3](images/AWS_lecture10_evi/cfで作成したs3%202025-03-28%20122049.png)
 
