@@ -40,8 +40,8 @@ Resources:
       DBInstanceClass: db.t3.micro
       Engine: MySQL
       EngineVersion: 8.0.35
-      MasterUsername: admin2
-      MasterUserPassword: !Ref DBPassword
+      MasterUsername: admin
+      MasterUserPassword: "{{resolve:secretsmanager:<YourSecretName>:SecretString:<YourKey>}}"
       DBName: RDS2
       AvailabilityZone: 
         !Select [0, !GetAZs '']
