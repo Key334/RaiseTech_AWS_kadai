@@ -4,7 +4,11 @@ Description: RDS for  MySQL Create
 
 Parameters:
  
-  DBPassword: !Sub "{{resolve:secretsmanager:my-secret-name:SecretString:password}}"
+  DBPassword: 
+    Type: String
+    AllowedPattern: !Sub my-pattern
+    NoEcho: true
+    "{{resolve:secretsmanager:my-secret-name:SecretString:password}}"
 
   NameBase: 
     Description: this is base name
