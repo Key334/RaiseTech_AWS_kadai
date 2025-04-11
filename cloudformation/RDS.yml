@@ -39,7 +39,7 @@ Resources:
       MasterUsername: admin2
       MasterUserPassword: !Ref DBPassword
       DBName: RDS2
-      AvailabilityZone1: !Select [0, !GetAZs !Ref "AWS::Region"]
+      AvailabilityZone: !Select [0, !GetAZs ""]
       # パブリックアクセス
       PubliclyAccessible: false
       StorageType: gp2

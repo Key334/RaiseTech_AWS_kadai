@@ -26,7 +26,7 @@ Resources:
  PublicSubnet1:
    Type: AWS::EC2::Subnet
    Properties: 
-    AvailabilityZone1: !Select [0, !GetAZs !Ref "AWS::Region"]
+    AvailabilityZone: !Select [0, !GetAZs ""]
     CidrBlock: 10.1.0.0/24
     VpcId: !Ref VPC 
     Tags: 
@@ -36,7 +36,7 @@ Resources:
  PublicSubnet2:
    Type: AWS::EC2::Subnet
    Properties: 
-    AvailabilityZone2: !Select [1, !GetAZs !Ref "AWS::Region"]
+    AvailabilityZone: !Select [1, !GetAZs ""]
     CidrBlock: 10.1.10.0/24
     VpcId: !Ref VPC 
     Tags: 
