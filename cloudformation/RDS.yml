@@ -4,11 +4,7 @@ Description: RDS for  MySQL Create
 
 Parameters:
  
-  DBPassword:
-    NoEcho: true
-    Type: String
-    MinLength: 8
-    MaxLength: 41
+  DBPassword: !Sub "{{resolve:secretsmanager:my-secret-name:SecretString:password}}"
 
   NameBase: 
     Description: this is base name
@@ -43,7 +39,7 @@ Resources:
       MasterUsername: admin2
       MasterUserPassword: !Ref DBPassword
       DBName: RDS2
-      AvailabilityZone: ap-northeast-1a
+      AvailabilityZone1: !Select [0, !GetAZs !Ref "AWS::Region"]
       # パブリックアクセス
       PubliclyAccessible: false
       StorageType: gp2
