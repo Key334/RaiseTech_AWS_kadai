@@ -3,13 +3,6 @@ Description: RDS for  MySQL Create
 
 
 Parameters:
- 
-  DBPassword: 
-    Type: String
-    AllowedPattern: ".*"
-    NoEcho: true
-    Default: "{{resolve:secretsmanager:my-secret-name:SecretString:password}}"
-
   NameBase: 
     Description: this is base name
     Type: String
@@ -40,8 +33,8 @@ Resources:
       DBInstanceClass: db.t3.micro
       Engine: MySQL
       EngineVersion: 8.0.35
-      MasterUsername: admin
-      MasterUserPassword: !Ref DBPassword
+      MasterUsername: !Sub "{{resolve:secretsmanager:MySecret:SecretString:username}}"
+      MasterUserPassword: !Sub "{{resolve:secretsmanager:MySecret:SecretString:password}}"
       DBName: RDS2
       AvailabilityZone: 
         !Select [0, !GetAZs '']
