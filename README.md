@@ -13,7 +13,7 @@
   |第９回|第５回課題実演続き|課題なし|
   |第１０回|第５回で作成したリソースをCloudFormationで作成(リソースのコード化)|[lecture10](lecture10.md)|
   |第１１回|第10回で作成したリソースをserverspecを使ってテスト（テストのコード化）|[lecture11](lecture11.md)|
-  |第１２回|||
+  |第１２回|cercleCIを用いて、CI/CDの練習|[lecture12](lecture12.md)|
   |第１３回|||
   |第１４回|||
   |第１５回|||
