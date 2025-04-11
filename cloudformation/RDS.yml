@@ -6,7 +6,7 @@ Parameters:
  
   DBPassword: 
     Type: String
-    AllowedPattern: !Sub my-pattern
+    AllowedPattern: ".*"
     NoEcho: true
     Default: "{{resolve:secretsmanager:my-secret-name:SecretString:password}}"
 
@@ -44,9 +44,7 @@ Resources:
       MasterUserPassword: !Ref DBPassword
       DBName: RDS2
       AvailabilityZone: 
-        Fn::Select:
-          - 0
-          - Fn::GetAZs: !Ref
+        !Select [0, !GetAZs '']
       # パブリックアクセス
       PubliclyAccessible: false
       StorageType: gp2
