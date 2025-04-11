@@ -27,9 +27,7 @@ Resources:
    Type: AWS::EC2::Subnet
    Properties: 
     AvailabilityZone: 
-      Fn::Select:
-        - 0
-        - Fn::GetAZs: !Ref
+      !Select [0, !GetAZs '']
     CidrBlock: 10.1.0.0/24
     VpcId: !Ref VPC 
     Tags: 
@@ -40,9 +38,7 @@ Resources:
    Type: AWS::EC2::Subnet
    Properties: 
     AvailabilityZone: 
-      Fn::Select:
-        - 1
-        - Fn::GetAZs: !Ref
+      !Select [1, !GetAZs '']
     CidrBlock: 10.1.10.0/24
     VpcId: !Ref VPC 
     Tags: 
@@ -52,7 +48,7 @@ Resources:
  PrivateSubnet1:
    Type: AWS::EC2::Subnet
    Properties: 
-    AvailabilityZone: ap-northeast-1a
+    AvailabilityZone: !Select [0, !GetAZs '']
     CidrBlock: 10.1.100.0/24
     VpcId: !Ref VPC 
     Tags: 
@@ -62,7 +58,7 @@ Resources:
  PrivateSubnet2:
    Type: AWS::EC2::Subnet
    Properties: 
-    AvailabilityZone: ap-northeast-1c
+    AvailabilityZone: !Select [1, !GetAZs '']
     CidrBlock: 10.1.200.0/24
     VpcId: !Ref VPC 
     Tags: 
