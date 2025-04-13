@@ -26,7 +26,11 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y ruby ruby-dev build-essential
             gem install --user-install serverspec
-            sudo apt-get install -y python3-pip  
+            sudo apt-get install -y python3-pip 
+      - run:
+          name: Install Ansible
+          command: |
+            pip3 install ansible 
       - run:
           name: Install specific rspec-its version
           command: |
