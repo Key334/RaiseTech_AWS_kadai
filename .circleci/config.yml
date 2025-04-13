@@ -43,6 +43,7 @@ jobs:
           name: Run Serverspec
           command: |
             cd serverspec-test
+            if [ ! -f Rakefile ]; then echo 'require "serverspec"' > Rakefile; fi
             rake spec
 
 workflows:
