@@ -17,7 +17,7 @@ jobs:
   # Ansible + Serverspec テストジョブ
   ansible-and-serverspec:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/ruby:3.3.0 
     steps:
       - checkout
       - run:
