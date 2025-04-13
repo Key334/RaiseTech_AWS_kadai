@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
-  python: circleci/python@2.0.3
+  ruby: circleci/ruby@1.1.2
+  python: circleci/python@2.1.1
 jobs:
   cfn-lint:
     executor: python/default
@@ -11,8 +12,29 @@ jobs:
           name: run cfn-lint
           command: |
             cfn-lint -i W3002 -t cloudformation/*.yml
-
+  ansible-and-serverspec:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y ruby ruby-dev build-essential
+            gem install --user-install serverspec
+            pip install ansible
+      - run:
+          name: Run Ansible
+          command: |
+            ansible-playbook ansible/test.yml -i ansible/inventory.ini
+      - run:
+          name: Run Serverspec
+          command: |
+            cd serverspec-test
+            rake spec
 workflows:
   raisetech:
     jobs:
       - cfn-lint
+      - ansible-and-serverspec
