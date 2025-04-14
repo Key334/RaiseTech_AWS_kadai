@@ -43,8 +43,16 @@ jobs:
           name: Run Serverspec
           command: |
             cd serverspec-test
-            if [ ! -f Rakefile ]; then echo 'require "serverspec"' > Rakefile; fi
-            rake --tasks  # List tasks to ensure 'spec' is available
+            if [ ! -f Rakefile ]; then
+              echo 'require "serverspec"' > Rakefile
+            fi
+            echo 'require "rake"
+require "rspec/core/rake_task"
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = "spec/**/*_spec.rb"
+end
+task default: :spec' >> Rakefile
+            rake --tasks
             rake spec
 
 workflows:
