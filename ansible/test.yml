@@ -1,0 +1,6 @@
+- name: Dummy test playbook
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Just ping
+      ping:
